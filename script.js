@@ -1,5 +1,13 @@
 console.log("Hello World!")
 
+const rockButton = document.querySelector("#rockButton");
+const paperButton = document.querySelector(".paperButton");
+const scissorsButton = document.querySelector(".scissorsButton");
+
+const scoreDisplay = document.querySelector("#scoreDisplay");
+const lastGame = document.querySelector("#lastGame");
+
+
 let PlayerScore = 0;
 let BotScore = 0;
 
@@ -39,12 +47,25 @@ function calculateWinner(choiceOne, choiceTwo){
         console.log("Congratulation! " + choiceTwo +  " Wins");
         BotScore++;
     }
-    console.log(choiceOne + " vs " + choiceTwo);
-    console.log("The Score is: " + PlayerScore + " For the player " + BotScore + " For the bot")
+
+    scoreDisplay.textContent = "The Score is: " + PlayerScore + " For the player " + BotScore + " For the bot";
+    lastGame.textContent = choiceOne + " vs " + choiceTwo;
 }
 
-for (let i = 0; i <= 5; i++){
-    calculateWinner(getHumanChoice(), randomRPS());
-}
+
+rockButton.addEventListener("click", () => {
+    calculateWinner("Rock", randomRPS());
+});
+paperButton.addEventListener("click", () => {
+    calculateWinner("Paper", randomRPS());
+});
+scissorsButton.addEventListener("click", () => {
+    calculateWinner("Scissors", randomRPS())
+});
+
+
+// for (let i = 0; i <= 5; i++){
+//     calculateWinner(getHumanChoice(), randomRPS());
+// }
 
 
